@@ -1,28 +1,33 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <my-table :data="tableData" :col-configs="colConfigs"> </my-table>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import MyTable from "./components/my-table";
+import { colConfigs } from "./config.js";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    MyTable
+  },
+  data() {
+    return {
+      // colConfigs: [
+      //   { prop: "change", label: "变化", component: this.PrefixPlusText },
+      //   { prop: "name", label: "趋势", component: this.PrefixPlusText }
+      // ],
+      colConfigs,
+      // PrefixPlusText,
+      tableData: [
+        {
+          change: "12%",
+          trend: "10%"
+        },
+        {
+          change: "-12%",
+          trend: "-10%"
+        }
+      ]
+    };
   }
-}
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
